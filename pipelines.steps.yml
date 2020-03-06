@@ -31,4 +31,3 @@ pipelines:
             - lhci autorun
           onComplete:
             - add_run_files .lighthouseci lhci_report
-            - add_run_files server.log server_log
