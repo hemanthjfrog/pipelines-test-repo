@@ -1,15 +1,17 @@
 pipelines:
-  - name: pipeline_hello_world
+  - name: pipeline_center_tests
     configuration:
       environmentVariables:
         readOnly:
-          MY_MESSAGE: '"Hello World!"'
+          LHCI_BUILD_CONTEXT__EXTERNAL_BUILD_URL: "$BUILD_URL"
+          LHCI_GITHUB_APP_TOKEN: 'gKZOay4Rf:7173980:FMFU7OMZS3H7UEh'
+          export LHCI_BUILD_CONTEXT__CURRENT_BRANCH: "$GIT_BRANCH"
     steps:
-      - name: step_1
+      - name: exec_lhci
         type: Bash
         configuration:
           inputResources:
-            - name: myAppRepo
+            - name: my-app
         execution:
           onExecute:
             - echo $MY_MESSAGE
@@ -20,36 +22,3 @@ pipelines:
             - echo $res_myAppRepo_resourcePath
             - echo $res_myAppRepo_gitProvider_name
             - echo $res_myAppRepo_commitSha
- 
-      - name: step_2
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: step_1
-        execution:
-          onExecute:
-            - echo $MY_MESSAGE
-            - echo "Running $pipeline_name | $step_name on node ID $step_node_id"
- 
-      - name: step_3
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: step_1
-        execution:
-          onExecute:
-            - echo $MY_MESSAGE
-            - echo "Running $pipeline_name | $step_name on node ID $step_node_id"
- 
-      - name: step_4
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: step_2
-            - name: step_3
-        execution:
-          onExecute:
-            - echo $MY_MESSAGE
-            - echo "Running $pipeline_name | $step_name on node ID $step_node_id"
-            - add_pipeline_variables prev_runid=$run_id           
-            - echo $current_runid Completed
