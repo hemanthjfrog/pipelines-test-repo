@@ -1,15 +1,14 @@
 pipelines:
   - name: pipeline_center_tests
-    configuration:
-      environmentVariables:
-        readOnly:
-          LHCI_BUILD_CONTEXT__EXTERNAL_BUILD_URL: "$BUILD_URL"
-          LHCI_GITHUB_APP_TOKEN: 'gKZOay4Rf:7173980:FMFU7OMZS3H7UEh'
-          export LHCI_BUILD_CONTEXT__CURRENT_BRANCH: "$GIT_BRANCH"
     steps:
       - name: exec_lhci
         type: Bash
         configuration:
+          environmentVariables:
+            readOnly:
+              LHCI_BUILD_CONTEXT__EXTERNAL_BUILD_URL: "$step_url"
+              LHCI_GITHUB_APP_TOKEN: 'gKZOay4Rf:7173980:FMFU7OMZS3H7UEh'
+              LHCI_BUILD_CONTEXT__CURRENT_BRANCH: "$res_my_app_branchName"
           inputResources:
             - name: my_app
           runtime:
