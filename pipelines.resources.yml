@@ -1,6 +1,6 @@
 resources:
-  - name: myAppRepo
+  - name: my-app
     type: GitRepo
     configuration:
-      gitProvider: myGitHub               # Change to your integration
-      path: myself/myrepo                 # Change to your repo
+      gitProvider: hemanth_personal            # Change to your integration
+      path: hemanthjfrog/my-app                # Change to your repo
