@@ -6,8 +6,9 @@ pipelines:
         configuration:
           environmentVariables:
               LHCI_BUILD_CONTEXT__EXTERNAL_BUILD_URL: "$step_url"
-              LHCI_GITHUB_APP_TOKEN: 'gKZOay4Rf:7173980:FMFU7OMZS3H7UEh'
               LHCI_BUILD_CONTEXT__CURRENT_BRANCH: "$res_my_app_branchName"
+          integrations:
+            - name: lhci_params
           inputResources:
             - name: my_app
           runtime:
