@@ -24,10 +24,11 @@ pipelines:
           onExecute:
             - cd $res_conan_lhci_resourcePath/web/ui-server
             - npm install
-            - yarn start > ui-server.log 2>&1 &
+            - yarn start > server.log 2>&1 &
             - export LHCI_GITHUB_APP_TOKEN=$int_lhci_params_LHCI_GITHUB_APP_TOKEN
             - cd $res_conan_lhci_resourcePath/web/web-source
             - npm install
             - lhci autorun
           onComplete:
             - add_run_files .lighthouseci lhci_report
+            - add_run_files server.log server_log
