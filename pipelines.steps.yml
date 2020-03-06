@@ -22,6 +22,10 @@ pipelines:
           onStart:
             - echo "Executing LHCI in container"
           onExecute:
+              - cd $res_conan_lhci_resourcePath/web/ui-server
+              - npm install
+              - yarn start
+          onExecute:
             - export LHCI_GITHUB_APP_TOKEN=$int_lhci_params_LHCI_GITHUB_APP_TOKEN
             - echo $res_conan_lhci_resourcePath
             - cd $res_conan_lhci_resourcePath/web/web-source
