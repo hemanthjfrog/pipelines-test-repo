@@ -10,23 +10,22 @@ pipelines:
           integrations:
             - name: lhci_params
           inputResources:
-            - name: my_app
+            - name: conan_lhci
           runtime:
             type: image
             image:
               custom:
                 name: hemanthsridhar-docker-lhci-server-center.bintray.io/lhci
-                tag: "2.0"
+                tag: "3.0"
                 autoPull: true        # default true; pulls image before runx
         execution:
           onStart:
             - echo "Executing LHCI in container"
           onExecute:
             - export LHCI_GITHUB_APP_TOKEN=$int_lhci_params_LHCI_GITHUB_APP_TOKEN
-            - cd $res_my_app_resourcePath
+            - cd $res_my_app_resourcePath/web/ui-source
             - npm install
             - npm run build
-            - echo Previous run ID is $prev_runid
-            - lhci autorun --upload.target="temporary-public-storage"
+            - lhci autorun
           onComplete:
             - add_run_files .lighthouseci lhci_report
