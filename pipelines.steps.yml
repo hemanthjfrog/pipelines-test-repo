@@ -22,6 +22,7 @@ pipelines:
           onStart:
             - echo "Executing LHCI in container"
           onExecute:
+            - export LHCI_GITHUB_APP_TOKEN=$int_lhci_params_LHCI_GITHUB_APP_TOKEN
             - cd $res_my_app_resourcePath
             - npm install
             - npm run build
