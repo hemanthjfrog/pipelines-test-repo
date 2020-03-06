@@ -11,7 +11,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: my-app
+            - name: my_app
         execution:
           onExecute:
             - echo $MY_MESSAGE

@@ -1,5 +1,5 @@
 resources:
-  - name: my-app
+  - name: my_app
     type: GitRepo
     configuration:
       gitProvider: hemanth_personal            # Change to your integration
