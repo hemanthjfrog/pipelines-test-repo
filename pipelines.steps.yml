@@ -31,4 +31,4 @@ pipelines:
           onComplete:
             - mkdir -p /tmp/reports
             - cp -r .lighthouseci/**.html /tmp/reports
-            - add_run_files lhci_report /tmp/reports
+            - add_run_files /tmp/reports lhci_report
