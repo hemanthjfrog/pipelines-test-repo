@@ -29,6 +29,4 @@ pipelines:
             - echo Previous run ID is $prev_runid
             - lhci autorun --upload.target="temporary-public-storage"
           onComplete:
-            - mkdir -p /tmp/reports
-            - cp -r .lighthouseci/**.html /tmp/reports
-            - add_run_files /tmp/reports lhci_report
+            - add_run_files .lighthouseci lhci_report
