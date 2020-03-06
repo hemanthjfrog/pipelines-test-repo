@@ -28,3 +28,7 @@ pipelines:
             - npm run build
             - echo Previous run ID is $prev_runid
             - lhci autorun --upload.target="temporary-public-storage"
+          onComplete:
+            - mkdir -p /tmp/reports
+            - cp -r .lighthouseci/**.html /tmp/reports
+            - add_run_files lhci_report /tmp/reports
