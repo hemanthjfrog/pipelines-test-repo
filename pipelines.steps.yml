@@ -16,7 +16,7 @@ pipelines:
             image:
               custom:
                 name: hemanthsridhar-docker-lhci-server-center.bintray.io/lhci
-                tag: "3.0"
+                tag: "4.0"
                 autoPull: true        # default true; pulls image before runx
         execution:
           onStart:
