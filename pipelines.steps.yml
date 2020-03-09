@@ -27,7 +27,6 @@ pipelines:
             - yarn start > server.log 2>&1 &
             - export LHCI_GITHUB_APP_TOKEN=$int_lhci_params_LHCI_GITHUB_APP_TOKEN
             - cd $res_conan_lhci_resourcePath/web/web-source
-            - npm install
             - lhci autorun
           onComplete:
             - add_run_files .lighthouseci lhci_report
